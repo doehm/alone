@@ -20,17 +20,12 @@ devtools::install_github("doehm/alone")
 
 ## `survivors`
 
-A data frame of all survivors across 9 seasons detailing:
-
-1.  Name and demographics
-2.  Location and profession
-3.  Result
-4.  Days lasted
-5.  Reasons for tapping out (detailed and categorised)
-6.  Page URL
+A data frame of all v across 9 seasons detailing name and demographics,
+location and profession, result, days lasted, reasons for tapping out
+(detailed and categorised), page URL.
 
 ``` r
-survivors
+survivalists
 ```
 
     ## # A tibble: 94 × 16
@@ -52,7 +47,7 @@ survivors
 
 ## `loadouts`
 
-Information on each survivor’s loadout of 10 items. It includes a
+Information on each survivalist’s loadout of 10 items. It includes a
 detailed item description and a simplified version for easier
 aggregation and analysis.
 
