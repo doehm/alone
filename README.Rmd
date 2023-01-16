@@ -2,6 +2,12 @@
 output: github_document
 ---
 
+```{r, echo=FALSE}
+library(alone)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+
 # alone <img src='dev/images/alone hex.png' align="right" height="240" />
 
 A collection of datasets on the [Alone](https://www.history.com/shows/alone) survival TV series in tidy format. Included in the package are 4 datasets detailed below. 
@@ -18,15 +24,35 @@ devtools::install_github("doehm/alone")
 
 # Datasets
 
-## Survivors
+## `survivors`
 
-A data frame of all survivors across 9 seasons detailing:
+A data frame of all survivors across 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), page URL.
 
-1. Name and demographics
-2. Location and profession
-3. Result
-4. Days lasted
-5. Reasons for tapping out (detailed and categorised)
-6. Page URL
+```{r}
+survivors
+```
 
+## `loadouts`
+
+Information on each survivor's loadout of 10 items. It includes a detailed item description and a simplified version for easier aggregation and analysis.
+
+```{r}
+loadouts
+```
+
+## `episodes`
+
+Contains details of each episode including the title, number of viewers, beginning quote and IMDb rating
+
+```{r}
+episodes
+```
+
+## `seasons`
+
+Season summary includes location and other season level information
+
+```{r}
+seasons
+```
 

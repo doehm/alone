@@ -25,7 +25,7 @@ episodes <- df_ls$episodes
 seasons <- df_ls$seasons
 loadouts <- df_ls$loadouts
 
-save(survivors, file = "data/survivors.rda")
+save(survivalists, file = "data/survivalists.rda")
 save(episodes, file = "data/episodes.rda")
 save(seasons, file = "data/seasons.rda")
 save(loadouts, file = "data/loadouts.rda")

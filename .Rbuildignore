@@ -1,3 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-devs
+dev
+keys
+auth
+README.Rmd
+README.md
+LICENSE
