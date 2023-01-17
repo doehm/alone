@@ -18,11 +18,11 @@ devtools::install_github("doehm/alone")
 
 # Datasets
 
-## `survivors`
+## `survivalists`
 
-A data frame of all v across 9 seasons detailing name and demographics,
-location and profession, result, days lasted, reasons for tapping out
-(detailed and categorised), page URL.
+A data frame of survivalists across all 9 seasons detailing name and
+demographics, location and profession, result, days lasted, reasons for
+tapping out (detailed and categorised), page URL.
 
 ``` r
 survivalists
@@ -45,6 +45,42 @@ survivalists
     ## #   day_linked_up <dbl>, profession <chr>, url <chr>, and abbreviated variable
     ## #   names ¹​days_lasted, ²​medically_evacuated, ³​reason_tapped_out
 
+``` r
+df <- expand_grid(
+  days_lasted = 0:max(survivalists$days_lasted),
+  gender = unique(survivalists$gender)
+  ) |> 
+  left_join(
+    survivalists |> 
+      count(days_lasted, gender),
+    by = c("days_lasted", "gender")
+  ) |> 
+  left_join(
+    survivalists |> 
+      count(gender, name = "N"),
+    by = "gender"
+  ) |> 
+  group_by(gender) |> 
+  mutate(
+    n = replace_na(n, 0),
+    n_lasted = N-cumsum(n),
+    p = n_lasted/N
+  ) 
+  
+# Kaplan-Meier survival curves
+df |> 
+  ggplot(aes(days_lasted, p, colour = gender)) +
+  geom_line() 
+
+# boxplots
+survivalists |> 
+  ggplot(aes(days_lasted, fill = gender)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_minimal()
+```
+
+<img src='dev/images/boxplots.png'>
+
 ## `loadouts`
 
 Information on each survivalist’s loadout of 10 items. It includes a
@@ -55,7 +91,7 @@ aggregation and analysis.
 loadouts
 ```
 
-    ## # A tibble: 870 × 6
+    ## # A tibble: 940 × 6
     ##    version season name     item_number item_detailed                       item 
     ##    <chr>    <dbl> <chr>          <dbl> <chr>                               <chr>
     ##  1 US           1 Alan Kay           1 Saw                                 Saw  
@@ -68,7 +104,11 @@ loadouts
     ##  8 US           1 Alan Kay           8 Small gauge gill net                Gill…
     ##  9 US           1 Alan Kay           9 3.5lb wire                          Wire 
     ## 10 US           1 Alan Kay          10 Knife                               Knife
-    ## # … with 860 more rows
+    ## # … with 930 more rows
+
+Most popular loadout items
+
+<img src='dev/images/items.png'>
 
 ## `episodes`
 

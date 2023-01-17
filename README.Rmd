@@ -5,6 +5,8 @@ output: github_document
 ```{r, echo=FALSE}
 library(alone)
 suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(tidyr))
 ```
 
 
@@ -24,13 +26,52 @@ devtools::install_github("doehm/alone")
 
 # Datasets
 
-## `survivors`
+## `survivalists`
 
-A data frame of all v across 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), page URL.
+A data frame of survivalists across all 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), page URL.
 
 ```{r}
 survivalists
 ```
+
+
+```{r, eval = FALSE}
+df <- expand_grid(
+  days_lasted = 0:max(survivalists$days_lasted),
+  gender = unique(survivalists$gender)
+  ) |> 
+  left_join(
+    survivalists |> 
+      count(days_lasted, gender),
+    by = c("days_lasted", "gender")
+  ) |> 
+  left_join(
+    survivalists |> 
+      count(gender, name = "N"),
+    by = "gender"
+  ) |> 
+  group_by(gender) |> 
+  mutate(
+    n = replace_na(n, 0),
+    n_lasted = N-cumsum(n),
+    p = n_lasted/N
+  ) 
+  
+# Kaplan-Meier survival curves
+df |> 
+  ggplot(aes(days_lasted, p, colour = gender)) +
+  geom_line() 
+
+# boxplots
+survivalists |> 
+  ggplot(aes(days_lasted, fill = gender)) +
+  geom_boxplot(alpha = 0.5) +
+  theme_minimal()
+
+```
+
+
+<img src='dev/images/boxplots.png'>
 
 ## `loadouts`
 
@@ -39,6 +80,11 @@ Information on each survivalist's loadout of 10 items. It includes a detailed it
 ```{r}
 loadouts
 ```
+
+Most popular loadout items
+
+<img src='dev/images/items.png'>
+
 
 ## `episodes`
 

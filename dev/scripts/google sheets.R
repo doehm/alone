@@ -6,8 +6,8 @@ library(janitor)
 # get data from google sheets ---------------------------------------------
 
 read_gs_data <- function() {
-  key <- read_rds("keys/alone.rds")
-  tbls <- c("survivors", "episodes", "seasons", "loadouts")
+  key <- read_rds("auth/alone.rds")
+  tbls <- c("survivalists", "episodes", "seasons", "loadouts")
   map(
     tbls,
     ~{
@@ -20,7 +20,7 @@ read_gs_data <- function() {
 
 df_ls <- read_gs_data()
 
-survivors <- df_ls$survivors
+survivalists <- df_ls$survivalists
 episodes <- df_ls$episodes
 seasons <- df_ls$seasons
 loadouts <- df_ls$loadouts
