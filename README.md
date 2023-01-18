@@ -25,31 +25,34 @@ demographics, location and profession, result, days lasted, reasons for
 tapping out (detailed and categorised), page URL.
 
 ``` r
-survivalists
+survivalists |> 
+  glimpse()
 ```
 
-    ## # A tibble: 94 × 16
-    ##    season name     age gender city  state country result days_…¹ medic…² reaso…³
-    ##     <dbl> <chr>  <dbl> <chr>  <chr> <chr> <chr>    <dbl>   <dbl> <lgl>   <chr>  
-    ##  1      1 Alan …    40 Male   Blai… Geor… United…      1      56 FALSE   <NA>   
-    ##  2      1 Sam L…    22 Male   Linc… Nebr… United…      2      55 FALSE   Lost t…
-    ##  3      1 Mitch…    34 Male   Bell… Mass… United…      3      43 FALSE   Realiz…
-    ##  4      1 Lucas…    32 Male   Quas… Iowa  United…      4      39 FALSE   Felt c…
-    ##  5      1 Dusti…    37 Male   Pitt… Penn… United…      5       8 FALSE   Fear o…
-    ##  6      1 Brant…    44 Male   Albe… Nort… United…      6       6 FALSE   Consum…
-    ##  7      1 Wayne…    46 Male   Sain… New … Canada       7       4 FALSE   Fear o…
-    ##  8      1 Joe R…    24 Male   Wind… Onta… Canada       8       4 FALSE   Loss o…
-    ##  9      1 Chris…    41 Male   Umat… Flor… United…      9       1 FALSE   Fear o…
-    ## 10      1 Josh …    31 Male   Jack… Ohio  United…     10       0 FALSE   Fear o…
-    ## # … with 84 more rows, 5 more variables: reason_category <chr>, team <chr>,
-    ## #   day_linked_up <dbl>, profession <chr>, url <chr>, and abbreviated variable
-    ## #   names ¹​days_lasted, ²​medically_evacuated, ³​reason_tapped_out
+    ## Rows: 94
+    ## Columns: 16
+    ## $ season              <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,…
+    ## $ name                <chr> "Alan Kay", "Sam Larson", "Mitch Mitchell", "Lucas…
+    ## $ age                 <dbl> 40, 22, 34, 32, 37, 44, 46, 24, 41, 31, 50, 44, 45…
+    ## $ gender              <chr> "Male", "Male", "Male", "Male", "Male", "Male", "M…
+    ## $ city                <chr> "Blairsville", "Lincoln", "Bellingham", "Quasqueto…
+    ## $ state               <chr> "Georgia", "Nebraska", "Massachusetts", "Iowa", "P…
+    ## $ country             <chr> "United States", "United States", "United States",…
+    ## $ result              <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7…
+    ## $ days_lasted         <dbl> 56, 55, 43, 39, 8, 6, 4, 4, 1, 0, 66, 64, 59, 57, …
+    ## $ medically_evacuated <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+    ## $ reason_tapped_out   <chr> NA, "Lost the mind game", "Realized he should actu…
+    ## $ reason_category     <chr> NA, "Family / personal", "Family / personal", "Fam…
+    ## $ team                <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+    ## $ day_linked_up       <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+    ## $ profession          <chr> "Corrections Officer", "Outdoor Gear Retailer", "B…
+    ## $ url                 <chr> "alan-kay", "sam-larson", "mitch-mitchell", "lucas…
 
 ``` r
 df <- expand_grid(
   days_lasted = 0:max(survivalists$days_lasted),
   gender = unique(survivalists$gender)
-  ) |> 
+) |> 
   left_join(
     survivalists |> 
       count(days_lasted, gender),
@@ -66,7 +69,7 @@ df <- expand_grid(
     n_lasted = N-cumsum(n),
     p = n_lasted/N
   ) 
-  
+
 # Kaplan-Meier survival curves
 df |> 
   ggplot(aes(days_lasted, p, colour = gender)) +
@@ -76,6 +79,7 @@ df |>
 survivalists |> 
   ggplot(aes(days_lasted, fill = gender)) +
   geom_boxplot(alpha = 0.5) +
+  geom_jitter(width = 0.2, pch = 1, size = 3) +
   theme_minimal()
 ```
 
@@ -88,25 +92,28 @@ detailed item description and a simplified version for easier
 aggregation and analysis.
 
 ``` r
-loadouts
+loadouts |> 
+  glimpse()
 ```
 
-    ## # A tibble: 940 × 6
-    ##    version season name     item_number item_detailed                       item 
-    ##    <chr>    <dbl> <chr>          <dbl> <chr>                               <chr>
-    ##  1 US           1 Alan Kay           1 Saw                                 Saw  
-    ##  2 US           1 Alan Kay           2 Axe                                 Axe  
-    ##  3 US           1 Alan Kay           3 Sleeping bag                        Slee…
-    ##  4 US           1 Alan Kay           4 Large 2-quart pot                   Pot  
-    ##  5 US           1 Alan Kay           5 Ferro rod                           Ferr…
-    ##  6 US           1 Alan Kay           6 Water bottle/canteen                Cant…
-    ##  7 US           1 Alan Kay           7 300 yards single filament line wit… Fish…
-    ##  8 US           1 Alan Kay           8 Small gauge gill net                Gill…
-    ##  9 US           1 Alan Kay           9 3.5lb wire                          Wire 
-    ## 10 US           1 Alan Kay          10 Knife                               Knife
-    ## # … with 930 more rows
+    ## Rows: 940
+    ## Columns: 6
+    ## $ version       <chr> "US", "US", "US", "US", "US", "US", "US", "US", "US", "U…
+    ## $ season        <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+    ## $ name          <chr> "Alan Kay", "Alan Kay", "Alan Kay", "Alan Kay", "Alan Ka…
+    ## $ item_number   <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9…
+    ## $ item_detailed <chr> "Saw", "Axe", "Sleeping bag", "Large 2-quart pot", "Ferr…
+    ## $ item          <chr> "Saw", "Axe", "Sleeping bag", "Pot", "Ferro rod", "Cante…
 
-Most popular loadout items
+``` r
+loadouts |>
+  count(item) |>
+  mutate(item = forcats::fct_reorder(item, n, max)) |>
+  ggplot(aes(item, n)) +
+  geom_col(fill = pal[1]) +
+  geom_text(aes(item, n + 3, label = n), family = ft, size = 12, colour = txt) +
+  coord_flip()
+```
 
 <img src='dev/images/items.png'>
 
@@ -116,43 +123,42 @@ Contains details of each episode including the title, number of viewers,
 beginning quote and IMDb rating
 
 ``` r
-episodes
+episodes |> 
+  glimpse()
 ```
 
-    ## # A tibble: 98 × 11
-    ##    version season episode_n…¹ episode title air_d…² viewers quote author imdb_…³
-    ##    <chr>    <dbl>       <dbl>   <dbl> <chr> <chr>     <dbl> <chr> <chr>    <dbl>
-    ##  1 US           1           1       1 And … 2015-0…    1.58 I we… Henry…     7.5
-    ##  2 US           1           2       2 Of W… 2015-0…    1.70 If y… Nikit…     7.7
-    ##  3 US           1           3       3 The … 2015-0…    1.86 Exti… Carl …     7.7
-    ##  4 US           1           4       4 Stal… 2015-0…    2.08 Hung… Alber…     7.7
-    ##  5 US           1           5       5 Wind… 2015-0…    2.08 The … Micha…     7.6
-    ##  6 US           1           6       6 Rain… 2015-0…    2.18 Extr… Rober…     7.6
-    ##  7 US           1           7       7 The … 2015-0…    2.09 Huma… David…     7.7
-    ##  8 US           1           8       8 Afte… 2015-0…   NA    This… Wayne      7.7
-    ##  9 US           1           9       9 The … 2015-0…    1.80 If q… Sun T…     7.7
-    ## 10 US           1          10      10 Brok… 2015-0…    1.94 Does… May S…     8.2
-    ## # … with 88 more rows, 1 more variable: n_ratings <dbl>, and abbreviated
-    ## #   variable names ¹​episode_number_overall, ²​air_date, ³​imdb_rating
+    ## Rows: 98
+    ## Columns: 11
+    ## $ version                <chr> "US", "US", "US", "US", "US", "US", "US", "US",…
+    ## $ season                 <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,…
+    ## $ episode_number_overall <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, …
+    ## $ episode                <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2, 3, 4, …
+    ## $ title                  <chr> "And So It Begins", "Of Wolf and Man", "The Tal…
+    ## $ air_date               <chr> "2015-06-18", "2015-06-25", "2015-07-02", "2015…
+    ## $ viewers                <dbl> 1.582, 1.697, 1.864, 2.082, 2.082, 2.181, 2.092…
+    ## $ quote                  <chr> "I went to the woods because I wished to live d…
+    ## $ author                 <chr> "Henry David Thoreau", "Nikita Khrushchev", "Ca…
+    ## $ imdb_rating            <dbl> 7.5, 7.7, 7.7, 7.7, 7.6, 7.6, 7.7, 7.7, 7.7, 8.…
+    ## $ n_ratings              <dbl> 135, 110, 104, 104, 99, 99, 97, 99, 93, 102, 75…
 
 ## `seasons`
 
-Season summary includes location and other season level information
+Season summary includes location and other season level information. It
+includes the date of drop off for the 3 latest seasons but need to be
+completed for the first 6 seasons.
 
 ``` r
-seasons
+seasons |> 
+  glimpse()
 ```
 
-    ## # A tibble: 9 × 8
-    ##   version season location         country   n_survivors   lat    lon date_drop…¹
-    ##   <chr>    <dbl> <chr>            <chr>           <dbl> <dbl>  <dbl> <chr>      
-    ## 1 US           1 Quatsino         Canada             10  50.7 -127.  <NA>       
-    ## 2 US           2 Quatsino         Canada             10  50.7 -127.  <NA>       
-    ## 3 US           3 Patagonia        Argentina          10 -41    -68   <NA>       
-    ## 4 US           4 Quatsino         Canada             14  50.7 -127.  <NA>       
-    ## 5 US           5 Selenge Province Mongolia           10  49.8  106.  <NA>       
-    ## 6 US           6 Great Slave Lake Canada             10  61.5 -114.  <NA>       
-    ## 7 US           7 Great Slave Lake Canada             10  61.5 -114.  2019-09-18 
-    ## 8 US           8 Chilko Lake      Canada             10  51.3 -124.  2020-09-18 
-    ## 9 US           9 Nunatsiavut      Canada             10  59.7  -64.3 2021-09-18 
-    ## # … with abbreviated variable name ¹​date_drop_off
+    ## Rows: 9
+    ## Columns: 8
+    ## $ version       <chr> "US", "US", "US", "US", "US", "US", "US", "US", "US"
+    ## $ season        <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9
+    ## $ location      <chr> "Quatsino", "Quatsino", "Patagonia", "Quatsino", "Seleng…
+    ## $ country       <chr> "Canada", "Canada", "Argentina", "Canada", "Mongolia", "…
+    ## $ n_survivors   <dbl> 10, 10, 10, 14, 10, 10, 10, 10, 10
+    ## $ lat           <dbl> 50.72444, 50.72444, -41.00000, 50.72444, 49.75000, 61.50…
+    ## $ lon           <dbl> -127.49806, -127.49806, -68.00000, -127.49806, 106.50000…
+    ## $ date_drop_off <chr> NA, NA, NA, NA, NA, NA, "2019-09-18", "2020-09-18", "202…

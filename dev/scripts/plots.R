@@ -72,6 +72,7 @@ g2 <- survivalists |>
   ggplot(aes(gender, days_lasted, colour = gender, fill = gender)) +
   geom_boxplot(alpha = 0.25) +
   geom_jitter(width = 0.2, pch = 1, size = 3) +
+  # geom_point(pch = 1, size = 3) +
   scale_colour_manual(values = pal1) +
   scale_fill_manual(values = pal1) +
   labs(

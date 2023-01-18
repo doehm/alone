@@ -19,7 +19,7 @@ For non-Rstats users here is the link to the [Google sheets doc](https://docs.go
 # Installation
 
 Install from Github:
-
+  
 ```{r, eval = FALSE}
 devtools::install_github("doehm/alone")
 ```
@@ -31,7 +31,8 @@ devtools::install_github("doehm/alone")
 A data frame of survivalists across all 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), page URL.
 
 ```{r}
-survivalists
+survivalists |> 
+  glimpse()
 ```
 
 
@@ -39,7 +40,7 @@ survivalists
 df <- expand_grid(
   days_lasted = 0:max(survivalists$days_lasted),
   gender = unique(survivalists$gender)
-  ) |> 
+) |> 
   left_join(
     survivalists |> 
       count(days_lasted, gender),
@@ -56,7 +57,7 @@ df <- expand_grid(
     n_lasted = N-cumsum(n),
     p = n_lasted/N
   ) 
-  
+
 # Kaplan-Meier survival curves
 df |> 
   ggplot(aes(days_lasted, p, colour = gender)) +
@@ -66,39 +67,51 @@ df |>
 survivalists |> 
   ggplot(aes(days_lasted, fill = gender)) +
   geom_boxplot(alpha = 0.5) +
+  geom_jitter(width = 0.2, pch = 1, size = 3) +
   theme_minimal()
 
 ```
 
 
 <img src='dev/images/boxplots.png'>
-
+  
 ## `loadouts`
-
+  
 Information on each survivalist's loadout of 10 items. It includes a detailed item description and a simplified version for easier aggregation and analysis.
 
 ```{r}
-loadouts
+loadouts |> 
+  glimpse()
 ```
 
-Most popular loadout items
+```{r, eval = FALSE}
+loadouts |>
+  count(item) |>
+  mutate(item = forcats::fct_reorder(item, n, max)) |>
+  ggplot(aes(item, n)) +
+  geom_col(fill = pal[1]) +
+  geom_text(aes(item, n + 3, label = n), family = ft, size = 12, colour = txt) +
+  coord_flip()
+```
 
 <img src='dev/images/items.png'>
-
 
 ## `episodes`
 
 Contains details of each episode including the title, number of viewers, beginning quote and IMDb rating
 
 ```{r}
-episodes
+episodes |> 
+  glimpse()
 ```
 
 ## `seasons`
 
-Season summary includes location and other season level information
+Season summary includes location and other season level information. It includes the date of drop off for the 3 latest seasons but need to be completed for the first 6 seasons.
 
 ```{r}
-seasons
+seasons |> 
+  glimpse()
 ```
+
 
