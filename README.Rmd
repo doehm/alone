@@ -110,7 +110,7 @@ loadouts |>
   count(item) |>
   mutate(item = fct_reorder(item, n, max)) |>
   ggplot(aes(item, n)) +
-  geom_col(fill = pal[1]) +
+  geom_col() +
   geom_text(aes(item, n + 3, label = n), family = ft, size = 12, colour = txt) +
   coord_flip()
 ```
