@@ -7,7 +7,7 @@ library(patchwork)
 pal <- c("#231942", "#3D3364", "#584E87", "#7566A0", "#937CB6", "#AAA1BC",
   "#BDD0B7", "#BFE7B2", "#A6DCAE", "#8ACFAB", "#5FBFAB", "#35B0AB")
 
-pal1 <- pal[c(2, 11)]
+pal1 <- c('#1B2624', '#956e62', '#4b3425', '#2e291b', '#575642')
 
 txt <- "grey20"
 line <- "grey80"
@@ -42,7 +42,6 @@ df <- expand_grid(
 g1 <- df |>
   ggplot(aes(days_lasted, p, colour = gender, fill = gender)) +
   geom_line() +
-  # xlim(0, 160) +
   scale_colour_manual(values = pal1) +
   labs(
     x = "Days lasted",
@@ -125,3 +124,8 @@ loadouts |>
 
 ggsave("dev/images/items.png", height = 8, width = 8)
 
+survivalists |>
+  count(reason_category, gender) |>
+  filter(!is.na(reason_category)) |>
+  ggplot(aes(reason_category, n, fill = gender)) +
+  geom_col()

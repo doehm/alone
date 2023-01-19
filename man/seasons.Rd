@@ -26,4 +26,10 @@ seasons
 \description{
 Season summary includes location and other season level information
 }
+\examples{
+library(dplyr)
+
+seasons |>
+count(country)
+}
 \keyword{datasets}

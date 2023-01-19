@@ -30,4 +30,12 @@ episodes
 Contains details of each episode including the title, number of viewers, beginning quote
 and IMDb rating
 }
+\examples{
+library(dplyr)
+library(ggplot2)
+
+episodes |>
+  ggplot(aes(episode_number_overall, viewers, colour = as.factor(season))) +
+  geom_line()
+}
 \keyword{datasets}

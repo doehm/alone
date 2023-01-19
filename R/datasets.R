@@ -6,7 +6,7 @@
 #' \describe{
 #'   \item{\code{season}}{The season number}
 #'   \item{\code{name}}{Name of the survivalist}
-#'   \item{\code{age}}{Age of survivor}
+#'   \item{\code{age}}{Age of survivalist}
 #'   \item{\code{gender}}{Gender}
 #'   \item{\code{city}}{City}
 #'   \item{\code{state}}{State}
@@ -23,6 +23,15 @@
 #'   \item{\code{url}}{URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/List_of_Alone_episodes#Season_1_(2015)_-_Vancouver_Island}
+#' @examples
+#' library(dplyr)
+#' library(ggplot2)
+#'
+#' survivalists |>
+#'   count(reason_category, gender) |>
+#'   filter(!is.na(reason_category)) |>
+#'   ggplot(aes(reason_category, n, fill = gender)) +
+#'   geom_col()
 "survivalists"
 
 #' Episodes
@@ -45,6 +54,13 @@
 #'   \item{\code{n_ratings}}{Number of ratings given for the episode}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/List_of_Alone_episodes#Season_1_(2015)_-_Vancouver_Island}
+#' @examples
+#' library(dplyr)
+#' library(ggplot2)
+#'
+#' episodes |>
+#'   ggplot(aes(episode_number_overall, viewers, colour = as.factor(season))) +
+#'   geom_line()
 "episodes"
 
 #' Seasons
@@ -63,6 +79,11 @@
 #'   \item{\code{date_drop_off}}{Date the survivors where dropped off}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/Alone_(TV_series)}
+#' @examples
+#' library(dplyr)
+#'
+#' seasons |>
+#' count(country)
 "seasons"
 
 #' Loadouts
@@ -79,4 +100,16 @@
 #'   \item{\code{item}}{Loadout item. Simplified for aggregation}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/Alone_(TV_series)}
+#' @examples
+#' library(dplyr)
+#' library(ggplot2)
+#' library(forcats)
+#'
+#' loadouts |>
+#'   count(item) |>
+#'   mutate(item = fct_reorder(item, n, max)) |>
+#'   ggplot(aes(item, n)) +
+#'   geom_col() +
+#'   geom_text(aes(item, n + 3, label = n)) +
+#'   coord_flip()
 "loadouts"

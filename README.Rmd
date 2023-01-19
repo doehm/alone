@@ -30,13 +30,30 @@ devtools::install_github("doehm/alone")
 
 A data frame of survivalists across all 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), page URL.
 
-```{r}
-survivalists |> 
-  glimpse()
-```
+Dataset features:
+
+* `season`: The season number
+* `name`: Name of the survivalist
+* `age`: Age of survivalist
+* `gender`: Gender
+* `city`: City
+* `state`: State
+* `country`: Country
+* `result`: Place the survivalist finished in the season
+* `days_lasted`: The number of days lasted in the game before tapping out or winning
+* `medically_evacuated`: Logical. If the survivalist was medically evacuated from the game
+* `reason_tapped_out`: The reason the survivalist tapped out of the game. `NA` means they were the winner}
+* `reason_category`: A simplified category of the reason for tapping out
+* `team`: The team they were associated with (only for season 4)
+* `day_linked_up`: Day the team members linked up
+* `profession`: Profession
+* `url`: URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast
+
 
 
 ```{r, eval = FALSE}
+library(tidyverse)
+
 df <- expand_grid(
   days_lasted = 0:max(survivalists$days_lasted),
   gender = unique(survivalists$gender)
@@ -77,17 +94,21 @@ survivalists |>
   
 ## `loadouts`
   
-Information on each survivalist's loadout of 10 items. It includes a detailed item description and a simplified version for easier aggregation and analysis.
+Each survivalist is allowed to take with them 10 items. This dataset includes information on each survivalist's loadout. It has detailed item descriptions and a simplified version for easier aggregation and analysis.
 
-```{r}
-loadouts |> 
-  glimpse()
-```
+* `version`: Country code for the version of the show
+* `season`: The season number
+* `name`: Name of the survivalist
+* `item_number`: Item number
+* `item_detailed`: Detailed loadout item description
+* `item`: Loadout item. Simplified for aggregation
 
 ```{r, eval = FALSE}
+library(forcats)
+
 loadouts |>
   count(item) |>
-  mutate(item = forcats::fct_reorder(item, n, max)) |>
+  mutate(item = fct_reorder(item, n, max)) |>
   ggplot(aes(item, n)) +
   geom_col(fill = pal[1]) +
   geom_text(aes(item, n + 3, label = n), family = ft, size = 12, colour = txt) +
@@ -98,20 +119,37 @@ loadouts |>
 
 ## `episodes`
 
-Contains details of each episode including the title, number of viewers, beginning quote and IMDb rating
+This dataset contains details of each episode including the title, number of viewers, beginning quote and IMDb rating. New episodes will be added at the end of future seasons.
 
-```{r}
-episodes |> 
-  glimpse()
-```
+* `version`: Country code for the version of the show
+* `season`: The season number
+* `episode_number_overall`: Episode number across seasons
+* `episode`: Episode number
+* `title`: Episode title
+* `air_date`: Date the episode originally aired
+* `viewers`: Number of viewers in the US (millions)
+* `quote`: The beginning quote
+* `author`: Author of the beginning quote
+* `imdb_rating`: IMDb rating of the episode
+* `n_ratings`: Number of ratings given for the episode
 
 ## `seasons`
 
-Season summary includes location and other season level information. It includes the date of drop off for the 3 latest seasons but need to be completed for the first 6 seasons.
+The season summary dataset includes location, latitude and longitude, and other season level information. It includes the date of drop off where the information exists.
 
-```{r}
-seasons |> 
-  glimpse()
-```
+* `version`: Country code for the version of the show
+* `season`: The season number
+* `location`: Location
+* `country`: Country
+* `n_survivors`: Number of survivors. Season 4 there were 7 teams of 2.
+* `lat`: Latitude
+* `lon`: Longitude
+* `date_drop_off`: Date the survivors where dropped off
 
+If there is any data you would like to include please get in touch.
 
+## References
+
+1. History: https://www.history.com/shows/alone/cast
+2. Wikipedia: https://en.wikipedia.org/wiki/Alone_(TV_series)
+3. Wikipedia (episodes): https://en.wikipedia.org/wiki/List_of_Alone_episodes#Season_1_(2015)_-_Vancouver_Island

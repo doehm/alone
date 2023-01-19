@@ -6,3 +6,5 @@ auth
 README.Rmd
 README.md
 LICENSE
+^cran-comments\.md$
+^LICENSE\.md$

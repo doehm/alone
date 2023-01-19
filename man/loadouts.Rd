@@ -24,4 +24,17 @@ loadouts
 \description{
 Information on each survivalists loadout of 10 items
 }
+\examples{
+library(dplyr)
+library(ggplot2)
+library(forcats)
+
+loadouts |>
+  count(item) |>
+  mutate(item = fct_reorder(item, n, max)) |>
+  ggplot(aes(item, n)) +
+  geom_col() +
+  geom_text(aes(item, n + 3, label = n)) +
+  coord_flip()
+}
 \keyword{datasets}

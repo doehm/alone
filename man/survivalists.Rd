@@ -9,7 +9,7 @@ This data frame contains the following columns:
 \describe{
   \item{\code{season}}{The season number}
   \item{\code{name}}{Name of the survivalist}
-  \item{\code{age}}{Age of survivor}
+  \item{\code{age}}{Age of survivalist}
   \item{\code{gender}}{Gender}
   \item{\code{city}}{City}
   \item{\code{state}}{State}
@@ -34,5 +34,15 @@ survivalists
 }
 \description{
 Contains details of each survivalist including demographics and results.
+}
+\examples{
+library(dplyr)
+library(ggplot2)
+
+survivalists |>
+  count(reason_category, gender) |>
+  filter(!is.na(reason_category)) |>
+  ggplot(aes(reason_category, n, fill = gender)) +
+  geom_col()
 }
 \keyword{datasets}
