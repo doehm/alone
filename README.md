@@ -10,6 +10,12 @@ doc](https://docs.google.com/spreadsheets/d/1-ZGasLGFVv6t50cOOhcA0SW68jdBIASTh3K
 
 # Installation
 
+Install from CRAN:
+
+``` r
+install.packages("alone")
+```
+
 Install from Github:
 
 ``` r
@@ -39,7 +45,7 @@ Dataset features:
 - `medically_evacuated`: Logical. If the survivalist was medically
   evacuated from the game
 - `reason_tapped_out`: The reason the survivalist tapped out of the
-  game. `NA` means they were the winner}
+  game. `NA` means they were the winner
 - `reason_category`: A simplified category of the reason for tapping out
 - `team`: The team they were associated with (only for season 4)
 - `day_linked_up`: Day the team members linked up
@@ -107,7 +113,7 @@ loadouts |>
   count(item) |>
   mutate(item = fct_reorder(item, n, max)) |>
   ggplot(aes(item, n)) +
-  geom_col(fill = pal[1]) +
+  geom_col() +
   geom_text(aes(item, n + 3, label = n), family = ft, size = 12, colour = txt) +
   coord_flip()
 ```
@@ -142,10 +148,11 @@ where the information exists.
 - `season`: The season number
 - `location`: Location
 - `country`: Country
-- `n_survivors`: Number of survivors. Season 4 there were 7 teams of 2.
+- `n_survivors`: Number of survivalists. Season 4 there were 7 teams of
+  2.
 - `lat`: Latitude
 - `lon`: Longitude
-- `date_drop_off`: Date the survivors where dropped off
+- `date_drop_off`: Date the survivalists were dropped off
 
 If there is any data you would like to include please get in touch.
 
