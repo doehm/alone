@@ -9,6 +9,7 @@ This data frame contains the following columns:
 \describe{
   \item{\code{version}}{Country code for the version of the show}
   \item{\code{season}}{The season number}
+  \item{\code{id}}{Survivalist ID}
   \item{\code{name}}{Name of the survivalist}
   \item{\code{item_number}}{Item number}
   \item{\code{item_detailed}}{Detailed loadout item description}
