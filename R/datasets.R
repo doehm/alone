@@ -4,7 +4,7 @@
 #'
 #' @format This data frame contains the following columns:
 #' \describe{
-#'   \item{\code{versiono}}{Country code for the version of the show}
+#'   \item{\code{version}}{Country code for the version of the show}
 #'   \item{\code{season}}{The season number}
 #'   \item{\code{id}}{Survivalist ID}
 #'   \item{\code{name}}{Name of the survivalist}
@@ -22,7 +22,7 @@
 #'   \item{\code{team}}{The team they were associated with (only for season 4)}
 #'   \item{\code{day_linked_up}}{Day the team members linked up}
 #'   \item{\code{profession}}{Profession}
-#'   \item{\code{url}}{URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast/}s
+#'   \item{\code{url}}{URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast/}
 #'   \item{\code{image_url}}{URL of survivalist image from the history channel. Prefix URL with https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/List_of_Alone_episodes#Season_1_(2015)_-_Vancouver_Island}
