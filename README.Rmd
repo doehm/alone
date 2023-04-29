@@ -37,7 +37,9 @@ A data frame of survivalists across all 9 seasons detailing name and demographic
 
 Dataset features:
 
+* `version`: The version country code (currently only US but getting preppred or other versions)
 * `season`: The season number
+* `id`: Survivalist unique ID
 * `name`: Name of the survivalist
 * `age`: Age of survivalist
 * `gender`: Gender
@@ -53,6 +55,7 @@ Dataset features:
 * `day_linked_up`: Day the team members linked up
 * `profession`: Profession
 * `url`: URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast
+* `image_url`: URL of survivalist image from the history channel. Prefix URL with https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/
 
 
 
@@ -103,6 +106,7 @@ Each survivalist is allowed to take with them 10 items. This dataset includes in
 
 * `version`: Country code for the version of the show
 * `season`: The season number
+* `id`: Survivalist unique ID
 * `name`: Name of the survivalist
 * `item_number`: Item number
 * `item_detailed`: Detailed loadout item description

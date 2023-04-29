@@ -1,4 +1,6 @@
 
+    ## Warning: package 'ggplot2' was built under R version 4.2.3
+
 # alone <img src='dev/images/alone hex.png' align="right" height="240" />
 
 A collection of datasets on the
@@ -32,7 +34,10 @@ tapping out (detailed and categorised), page URL.
 
 Dataset features:
 
+- `version`: The version country code (currently only US but getting
+  preppred or other versions)
 - `season`: The season number
+- `id`: Survivalist unique ID
 - `name`: Name of the survivalist
 - `age`: Age of survivalist
 - `gender`: Gender
@@ -52,6 +57,9 @@ Dataset features:
 - `profession`: Profession
 - `url`: URL of castaway page on the history channel website. Prefix URL
   with <https://www.history.com/shows/alone/cast>
+- `image_url`: URL of survivalist image from the history channel. Prefix
+  URL with
+  <https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/>
 
 ``` r
 library(tidyverse)
@@ -101,6 +109,7 @@ analysis.
 
 - `version`: Country code for the version of the show
 - `season`: The season number
+- `id`: Survivalist unique ID
 - `name`: Name of the survivalist
 - `item_number`: Item number
 - `item_detailed`: Detailed loadout item description

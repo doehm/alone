@@ -4,18 +4,12 @@
 
 # 📚 libraries ------------------------------------------------------------
 
-library(bayesplot)
-library(survival)
-library(survminer)
-library(ggbump)
-library(coxme)
 library(tidyverse)
-library(rstanarm)
+library(survival)
+library(ggbump)
 library(rstan)
 library(showtext)
 library(ggchicklet)
-library(brms)
-library(tidyverse)
 
 # 🎨 fonts and palettes ---------------------------------------------------
 
