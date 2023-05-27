@@ -11,6 +11,7 @@ This data frame contains the following columns:
   \item{\code{season}}{The season number}
   \item{\code{location}}{Location}
   \item{\code{country}}{Country}
+  \item{\code{region}}{Region}
   \item{\code{n_survivors}}{Number of survivors. Season 4 there were 7 teams of 2.}
   \item{\code{lat}}{Latitude}
   \item{\code{lon}}{Longitude}

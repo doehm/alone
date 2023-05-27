@@ -12,6 +12,8 @@ This data frame contains the following columns:
   \item{\code{episode_number_overall}}{Episode number across seasons}
   \item{\code{episode}}{Episode number}
   \item{\code{title}}{Episode title}
+  \item{\code{day_start}}{The day the episode started on}
+  \item{\code{n_remaining}}{How are remaining at the start of the episode}
   \item{\code{air_date}}{Date the episode originally aired}
   \item{\code{viewers}}{Number of viewers in the US (millions)}
   \item{\code{quote}}{The beginning quote}

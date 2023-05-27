@@ -5,4 +5,5 @@
 auth
 CRAN-SUBMISSION
 dev/code
-dev/images/survivalists
+dev/images
+dev/markdown

@@ -247,9 +247,9 @@ df |>
   scale_colour_manual(values = pal_gender) +
   scale_fill_manual(values = pal_gender) +
   labs(
-    #     title = "Tapped out for personal reasons",
-    #     subtitle = "There have been 4 women (21%) and 24 men (39%) that have tapped out due
-    # to personal reasons such as missing their family.",
+        title = "Tapped out for personal reasons",
+        subtitle = "There have been 4 women (21%) and 24 men (39%) that have tapped out due
+    to personal reasons such as missing their family.",
     colour = "Gender",
     fill = "Gender",
     x = "Days",
