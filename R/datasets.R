@@ -8,6 +8,8 @@
 #'   \item{\code{season}}{The season number}
 #'   \item{\code{id}}{Survivalist ID}
 #'   \item{\code{name}}{Name of the survivalist}
+#'   \item{\code{first_name}}{First name of the survivalist}
+#'   \item{\code{last_name}}{Last name of the survivalist}
 #'   \item{\code{age}}{Age of survivalist}
 #'   \item{\code{gender}}{Gender}
 #'   \item{\code{city}}{City}
