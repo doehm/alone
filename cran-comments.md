@@ -5,6 +5,8 @@
 * Version increment
 * New features
 * Data updates
+    - Adding Alone Australia
+    - Adding cast for season 10
 
 ## Test environments
 

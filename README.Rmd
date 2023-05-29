@@ -41,6 +41,8 @@ Dataset features:
 * `season`: The season number
 * `id`: Survivalist unique ID
 * `name`: Name of the survivalist
+* `first_name`: First name of the survivalist
+* `last_name`: last name of the survivalist
 * `age`: Age of survivalist
 * `gender`: Gender
 * `city`: City
@@ -54,8 +56,6 @@ Dataset features:
 * `team`: The team they were associated with (only for season 4)
 * `day_linked_up`: Day the team members linked up
 * `profession`: Profession
-* `url`: URL of castaway page on the history channel website. Prefix URL with https://www.history.com/shows/alone/cast
-* `image_url`: URL of survivalist image from the history channel. Prefix URL with https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/
 
 
 
