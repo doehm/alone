@@ -1,7 +1,7 @@
 
     ## Warning: package 'ggplot2' was built under R version 4.2.3
 
-# alone <img src='dev/images/alone hex.png' align="right" height="240" />
+# alone <img src='dev/hex/hex.png' align="right" height="240" />
 
 A collection of datasets on the
 [Alone](https://www.history.com/shows/alone) survival TV series in tidy
@@ -98,7 +98,7 @@ survivalists |>
   theme_minimal()
 ```
 
-<img src='dev/images/boxplots.png'>
+<img src='dev/hex/gender-km.png'>
 
 ## `loadouts`
 
