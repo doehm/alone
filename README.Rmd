@@ -9,6 +9,8 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(tidyr))
 ```
 
+<img src='https://cranlogs.r-pkg.org/badges/alone'/><img src='https://cranlogs.r-pkg.org/badges/grand-total/alone'/><img src='https://www.r-pkg.org/badges/version/alone'/>
+
 # alone <img src='dev/hex/hex.png' align="right" height="240" />
 
 A collection of datasets on the [Alone](https://www.history.com/shows/alone) survival TV series in tidy format. Included in the package are 4 datasets detailed below. 

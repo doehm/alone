@@ -1,5 +1,5 @@
 
-    ## Warning: package 'ggplot2' was built under R version 4.2.3
+<img src='https://cranlogs.r-pkg.org/badges/alone'/><img src='https://cranlogs.r-pkg.org/badges/grand-total/alone'/><img src='https://www.r-pkg.org/badges/version/alone'/>
 
 # alone <img src='dev/hex/hex.png' align="right" height="240" />
 
