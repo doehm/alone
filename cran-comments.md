@@ -3,10 +3,8 @@
 0 errors | 0 warnings | 0 note
 
 * Version increment
-* New features
 * Data updates
-    - Adding Alone Australia
-    - Adding cast for season 10
+    - Adding complete season 10 data
 
 ## Test environments
 

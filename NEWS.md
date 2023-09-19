@@ -1,3 +1,8 @@
+# alone v0.3
+
+* Data updates
+    - Adding complete seaosn 10 data
+
 # alone v0.2
 
 * Data updates
