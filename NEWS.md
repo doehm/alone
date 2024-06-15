@@ -1,9 +1,17 @@
+# alone v0.4
+
+* Data updates
+    - Adding complete Alone Australia season 2 data
+    - Adding complete Alone: Frozen data
+
+
 # alone v0.3
 
 * Data updates
-    - Adding complete seaosn 10 data
+    - Adding complete season 10 data
 
 # alone v0.2
+
 
 * Data updates
     - Adding Alone Australia

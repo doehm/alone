@@ -4,7 +4,9 @@
 
 * Version increment
 * Data updates
-    - Adding complete season 10 data
+    - Adding complete Alone Australia season 2 data
+    - Adding complete Alone: Frozen data
+* No new functions
 
 ## Test environments
 
