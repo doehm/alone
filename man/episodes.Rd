@@ -20,6 +20,7 @@ This data frame contains the following columns:
   \item{\code{author}}{Author of the beginning quote}
   \item{\code{imdb_rating}}{IMDb rating of the episode}
   \item{\code{n_ratings}}{Number of ratings given for the episode}
+  \item{\code{description}}{Description of the episode from IMDb}
 }
 }
 \source{
