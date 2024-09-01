@@ -77,6 +77,7 @@
 #' \describe{
 #'   \item{\code{version}}{Country code for the version of the show}
 #'   \item{\code{season}}{The season number}
+#'   \item{\code{subtitle}}{Season subtitle}
 #'   \item{\code{location}}{Location}
 #'   \item{\code{country}}{Country}
 #'   \item{\code{region}}{Region}
