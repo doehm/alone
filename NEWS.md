@@ -1,3 +1,10 @@
+# alone v0.5
+
+* Data updates
+    - Adding complete Alone season 11
+    - Episode subtitle and description of IMDb
+
+
 # alone v0.4
 
 * Data updates
