@@ -1,17 +1,21 @@
 Package: alone
 Type: Package
 Title: Datasets from the Survival TV Series Alone
-Version: 0.5
+Version: 0.6
 Authors@R: 
   c(person(given = "Daniel",
-           family = "Oehm",
-           role = c("aut", "cre"),
-           email = "danieloehm@gmail.com"))
+         family = "Oehm",
+         role = c("aut", "cre"),
+         email = "danieloehm@gmail.com"),
+    person(given = "Carly",
+         family = "Levitz",
+         role = "ctb",
+         email = "celevitz@gmail.com"))
 Description: A collection of datasets on the Alone survival TV series in tidy format. 
   Included in the package are 4 datasets detailing the survivors, their loadouts,
   episode details and season information.
 Depends:
-  R (>= 3.5.0)
+  R (>= 4.1.0)
 Suggests:
   dplyr,
   ggplot2,

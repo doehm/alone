@@ -1,3 +1,9 @@
+# alone v0.6
+
+* Data updates
+    - Adding complete Alone Australia Season 3
+
+
 # alone v0.5
 
 * Data updates
