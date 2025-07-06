@@ -136,3 +136,8 @@ df_surv |>
   )
 
 ggsave("dev/images/AU03/survival-curve.png", width = 8, height = 6)
+
+
+# other stats -------------------------------------------------------------
+
+
