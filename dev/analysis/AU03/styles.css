@@ -1,0 +1,189 @@
+/* --- Alone Themed CSS for Quarto Closeread --- */
+/* Author: Gemini */
+/* Date: July 3, 2025 */
+
+/* --- 1. Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap');
+
+/* --- 2. Root Variables --- */
+/* Define the color palette and fonts for easy customization */
+:root {
+    /* Primary Palette */
+    --background-color: #1a1a1a; /* Very dark grey, almost black for the main background */
+    --text-color: #1a1a1a; /* Light grey for body text, easy on the eyes */
+    --header-color: #F5F5F5; /* Slightly brighter white for main headings */
+    --accent-color: #8f9d73; /* Muted, earthy green for accents, links, etc. */
+    --card-background: rgba(26, 26, 26, 0.85); /* Semi-transparent dark background for narrative cards */
+    --border-color: #444; /* Subtle border color */
+
+    /* Typography */
+    --font-body: 'Lato', sans-serif;
+    --font-header: 'Montserrat', sans-serif;
+
+    /* Spacing & Sizing */
+    --border-radius: 8px; /* Soft rounded corners */
+    --transition-speed: 0.3s;
+}
+
+/* --- 3. General Body & Typography Styling --- */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em auto; /* Adds some vertical space and centers the image */
+    border-radius: var(--border-radius); /* Optional: uses the same rounded corners as cards */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+    color: var(--header-color);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+p {
+    margin-bottom: 1.5em;
+    max-width: 75ch; /* Optimal line length for readability */
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover, a:focus {
+    color: #b0c08e; /* Lighter green on hover */
+    text-decoration: underline;
+}
+
+/* --- 4. Quarto Closeread Specific Styling --- */
+
+/* Main container for the scrollytelling block */
+.cr-container {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* The figure/image that stays in the background */
+.cr-figure {
+    /* The figure will have a default opacity */
+    opacity: 0.9;
+}
+
+/* The narrative text that scrolls over the figure */
+.cr-narrative {
+    /* This ensures the narrative text has some breathing room */
+    padding: 1rem 0;
+}
+
+/* Individual cards/steps in the narrative */
+.cr-card {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 20vh; /* Creates space between cards */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); /* Creates a frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+/* Styling for the active card */
+.cr-card.cr-active {
+    border-color: var(--accent-color);
+    transform: scale(1.02); /* Slightly enlarges the active card */
+}
+
+/* --- 5. Article & Layout Elements --- */
+
+/* Center the main content and give it a max-width */
+.quarto-body-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-style: italic;
+    color: #ccc;
+}
+
+code {
+    background-color: #2b2b2b;
+    color: #f8f8f2;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* --- 6. Responsive Design --- */
+@media (max-width: 1200px) {
+    body {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .cr-card {
+        padding: 1.5rem;
+    }
+
+    .quarto-body-content {
+        padding: 1rem;
+    }
+}
+
+.cr-hl {
+  background-color: #ffd700; /* Change this to your desired highlight color */
+  color: #000000;            /* Change this to your desired text color */
+}
+
+.hero-section {
+  min-height: 100vh;
+}
+
+/* Target the media column specifically for the background */
+.hero-section .media-col {
+  background-size: cover !important;
+  background-position: center center !important;
+}

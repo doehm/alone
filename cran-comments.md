@@ -2,8 +2,7 @@
 
 0 errors | 0 warnings | 0 note
 
-* Version increment
-* Added dependency for R 4.1.0
 * Data updates
-    - Adding complete Alone Australia season 3 data
+    - Adding complete Alone season 12
 * No new functions
+* No new dependencies

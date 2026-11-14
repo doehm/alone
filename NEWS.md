@@ -1,3 +1,9 @@
+# alone v0.7
+
+* Data updates
+    - Adding complete Alone Season 12
+
+
 # alone v0.6
 
 * Data updates
