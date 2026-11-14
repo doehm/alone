@@ -9,3 +9,4 @@ LICENSE
 ^cran-comments\.md$
 ^LICENSE\.md$
 ^CRAN-SUBMISSION$
+^website$
